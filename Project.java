@@ -1,39 +1,95 @@
 import java.util.Scanner;
+import java.time.LocalDate;
+import java.time.LocalTime;
 
 public class Project
 {
-  public static void main(String[] args)
-  {
-      Scanner input = new Scanner(System.in);
-       
-              
-      System.out.println("***Main Menu***");
-      System.out.println("\nPlease select one of the following:");
-      System.out.println("\t1. Display my available credit");
-      System.out.println("\t2. Add credit to my account");
-      System.out.println("\t3. Play the guessing game ");
-      System.out.println("\t4. Display my statistics");
-      System.out.println("\t5. Save my statistics");
-      System.out.println("\t6. To Exit"); 
-      
-      int choice =input.nextInt();
-      //int credit =0;
-      switch (choice)
-      {
-          case 1 -> System.out.println("Display my available credit");
-          case 2 -> System.out.println("Add credit to account ");
-          case 3 -> System.out.println("Play the guessing game");
-          case 4 -> System.out.println("Display my stastistics");        
-          case 5 -> System.out.println("Save my statistics");
-          case 6 -> System.out.println("To Exit");
-              
-           
-          //System.out.println(" How much ");
-              
-          
-      }    
-      
-               
-  }      
-
+    final static double MAX_ALLOWED = 20;
+    public static void main (String [] args) 
+    {
+        Scanner Input = new Scanner(System.in);
+        
+        int choice;
+        int correctGuesses = 0;
+        int missedGuesses = 0;
+        String playerName;
+        double balance = 0;
+        double amount = 0;
+        LocalTime Time = LocalTime.now();
+        LocalDate Date = LocalDate.now();
+        
+        do{
+            printMenu();
+            System.out.print("Enter your choice: ");
+            choice = Input.nextInt();
+            
+            switch(choice)
+        
+        {
+            case 1 -> 
+            {
+                System.out.println("\nYou entered 1:Display my available credit");
+                System.out.println("Your available balance is: $" + balance);
+            }
+            case 2 ->
+            {
+                System.out.println("You entered 2:Add credits to my account");
+                System.out.print("Please enter the amount you would like to add:");
+                amount = Input.nextDouble();
+                if((amount + balance) <= 20 )
+                {
+                    balance += amount;
+                }
+                else
+                {
+                    System.out.println("Balance exceeds 20, try again.");
+                    
+                }
+                
+            }
+            case 3 ->
+            {
+             System.out.println("You entered 3:Play the guessing game");
+             
+            }
+            case 4 -> 
+            {
+             System.out.println("You entered 4:Display my statistics");
+             System.out.println(Date.toString() + ", " + Time.toString());
+            }
+            case 5 -> 
+            {
+             System.out.println("You entered 5:Save my statistics");
+             
+            }
+            case 6 -> 
+            {
+             System.out.println("Thank you for using Java Beans software, goodbye.");
+            }
+            default -> 
+            {    
+                System.out.println("Invalid");
+            }
+            
+        }
+            
+          }
+        while(choice != 6);
+        
+        
+    }
+    public static void printMenu()
+    {
+         System.out.println("*** Java Beans ***");
+        System.out.println("\n*** Main Menu ***");
+        System.out.println("\nPlease select one of the following: ");
+        
+        System.out.println("\t1: Display my available credit");
+        System.out.println("\t2: Add credits to my account");
+        System.out.println("\t3: Play the guessing game");
+        System.out.println("\t4: Display my statistics");
+        System.out.println("\t5: Save my statistics");
+        System.out.println("\t6: To exit");
+        
+    }
 }
